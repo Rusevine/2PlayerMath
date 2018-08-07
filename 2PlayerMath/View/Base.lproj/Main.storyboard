@@ -179,6 +179,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3J-q7-UaY">
+                                <rect key="frame" x="62" y="207" width="250" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="47"/>
+                                <state key="normal" title="Play Again">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="playAgain:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ReQ-Pi-UPa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -186,6 +198,7 @@
                     <connections>
                         <outlet property="checkLabel" destination="lqT-0Y-taW" id="Akg-vl-aFl"/>
                         <outlet property="mainScreen" destination="6Lv-gX-B1U" id="lYj-O3-Srj"/>
+                        <outlet property="playAgain" destination="d3J-q7-UaY" id="RT0-yx-2fx"/>
                         <outlet property="player1Hearts" destination="n31-lv-kk5" id="ZdV-1Y-jgn"/>
                         <outlet property="player1Score" destination="14S-N2-9b1" id="Mju-3h-JUu"/>
                         <outlet property="player2Hearts" destination="td5-Ew-r7q" id="mFH-hn-3N3"/>

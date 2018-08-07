@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *player1Hearts;
 @property (weak, nonatomic) IBOutlet UILabel *player2Hearts;
 @property (weak, nonatomic) IBOutlet UILabel *checkLabel;
+@property (weak, nonatomic) IBOutlet UIButton *playAgain;
 
 @end
 
@@ -46,6 +47,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.playAgain.hidden = YES;
+    self.playAgain.layer.cornerRadius = 15;
     self.mainScreen.text = [NSString stringWithFormat:@"%@: %ld + %ld ?",self.players[0].name,(long)self.game.x,(long)self.game.y];
 }
 
@@ -77,17 +80,33 @@
     }
 }
 
+- (IBAction)playAgain:(id)sender {
+    _player1 = [[Player alloc] initWithName:@"Player 1"];
+    _player2 = [[Player alloc] initWithName:@"Player 2"];
+    _currentPlayer = 0;
+    _players = @[self.player1,self.player2];
+    _game = [[Game alloc] init];
+    self.playAgain.hidden = YES;
+    [self updateView];
+}
+
+
+
 -(void)updateView{
     
-    self.player1Score.text = [NSString stringWithFormat:@"Player 1: %ld",self.player1.score];
-    self.player2Score.text = [NSString stringWithFormat:@"Player 2: %ld",self.player2.score];
-    self.player1Hearts.text = [NSString stringWithFormat:@"%@",self.hearts[self.player1.hearts-1]];
-    self.player2Hearts.text = [NSString stringWithFormat:@"%@",self.hearts[self.player2.hearts-1]];
-    self.mainScreen.text = [NSString stringWithFormat:@"%@: %ld + %ld ?",self.players[self.currentPlayer].name,(long)self.game.x,(long)self.game.y];
-    if(self.result == YES){
-        self.checkLabel.text = @"✔";
+    if(self.player1.hearts == 0 || self.player2.hearts == 0){
+        self.playAgain.hidden = NO;
     } else {
-        self.checkLabel.text = @"𝑿";
+        self.player1Score.text = [NSString stringWithFormat:@"Player 1: %ld",self.player1.score];
+        self.player2Score.text = [NSString stringWithFormat:@"Player 2: %ld",self.player2.score];
+        self.player1Hearts.text = [NSString stringWithFormat:@"%@",self.hearts[self.player1.hearts-1]];
+        self.player2Hearts.text = [NSString stringWithFormat:@"%@",self.hearts[self.player2.hearts-1]];
+        self.mainScreen.text = [NSString stringWithFormat:@"%@: %ld + %ld ?",self.players[self.currentPlayer].name,(long)self.game.x,(long)self.game.y];
+        if(self.result == YES){
+            self.checkLabel.text = @"✔";
+        } else {
+            self.checkLabel.text = @"𝑿";
+        }
     }
     }
 
